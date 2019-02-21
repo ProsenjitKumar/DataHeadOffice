@@ -13,13 +13,15 @@ except:
 cur = conn.cursor()
 
 # execute query
-cur.execute("insert into employers (id, name) values (%s, %s)", (4, "Newton"))
+#cur.execute("insert into employers (id, name) values (%s, %s)", (7, "Akash"))
 
 cur.execute("Select id, name from employers")
 rows = cur.fetchall()
 for r in rows:
     print(f"id {r[0]} name {r[1]}")
 
+# commit the transaction
+conn.commit()
 # close the cursor
 cur.close()
 
