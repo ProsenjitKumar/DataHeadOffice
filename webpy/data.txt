@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "name": "Prosenjit Das",
+        "log_date": "2019-03-02",
+        "log_time": "12:10:12.247257",
+        "login": null,
+        "logout": null
+    },
+    {
+        "id": 2,
+        "name": "Sudipto Rahman",
+        "log_date": "2019-03-02",
+        "log_time": "12:10:12.247257",
+        "login": "11:26:45",
+        "logout": "10:49:53"
+    },
+    {
+        "id": 3,
+        "name": "Trump Khatun",
+        "log_date": "2019-03-02",
+        "log_time": "12:10:12.247257",
+        "login": null,
+        "logout": null
+    },
+    {
+        "id": 4,
+        "name": "Putin Hasan",
+        "log_date": "2019-03-02",
+        "log_time": "12:10:12.247257",
+        "login": null,
+        "logout": null
+    },
+    {
+        "id": 5,
+        "name": "Modi Roy",
+        "log_date": "2019-03-02",
+        "log_time": "12:22:06",
+        "login": null,
+        "logout": null
+    },
+    {
+        "id": 6,
+        "name": "Amuk khondokar",
+        "log_date": "2019-03-03",
+        "log_time": "06:06:52",
+        "login": null,
+        "logout": "06:06:59"
+    },
+    {
+        "id": 7,
+        "name": "Suvankar Chowdhury",
+        "log_date": "2019-03-03",
+        "log_time": "06:07:27",
+        "login": null,
+        "logout": "07:07:30"
+    }
+]
