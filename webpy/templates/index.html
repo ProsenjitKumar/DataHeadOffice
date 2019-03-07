@@ -1,9 +1,11 @@
-$def with (historical_data)
+$def with(history, absent, active, out, c)
 
 <title>Home Page</title>
 
 
-<!-- DataTables Example -->
+$c
+
+<!-- DataTables of employees -->
           <div style="margin:0 auto;width:85%;text-align:left" class="card mb-3">
             <div class="card-body">
               <div class="table-responsive">
@@ -15,37 +17,60 @@ $def with (historical_data)
                       <th>Record ID</th>
                       <th>Name</th>
                       <th>Log Date</th>
+                      <th>Log Time</th>
                       <th>Login</th>
                       <th>Logout</th>
+                      <th>Out Time</th>
+                      <th>Absent Today</th>
                     </tr>
                   </thead>
-                  <tfoot>
-                    <tr>
-                      <th>Record ID</th>
-                      <th>Name</th>
-                      <th>Log Out</th>
-                      <th>Login</th>
-                      <th>Logout</th>
-                    </tr>
-                  </tfoot>
 
-                  $for i in historical_data:
+                  $for i in history:
 
                      <tbody>
                           <tr>
-                            <td>$i</td>
-
+                            <td>$i[0]</td>
+                            <td>$i[1]</td>
+                            <td>$i[2]</td>
+                            <td>$i[3]</td>
+                            <td>$i[4]</td>
+                            <td>$i[5]</td>
+                            <td>$i[6]</td>
+                            <td>$i[10]</td>
                           </tr>
                       <tbody>
 
                 </table>
               </div>
             </div>
-          </div>
+          </div><br><br><br>
 
+<!--pie chart employee present position survey-->
+<script>
+window.onload = function() {
 
+var chart = new CanvasJS.Chart("chartContainer", {
+  animationEnabled: true,
+  title: {
+    text: "Employeer Position - Today"
+  },
+  data: [{
+    type: "pie",
+    startAngle: 240,
+    yValueFormatString: "##0.00\"%\"",
+    indexLabel: "{label} {y}",
+    dataPoints: [
+      {y: $absent, label: "Absent"},
+      {y: $active, label: "Active"},
+      {y: $out, label: "Out"},
+    ]
+  }]
+});
+chart.render();
 
-
-
+}
+</script>
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 

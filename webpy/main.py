@@ -1,16 +1,23 @@
 import web
 import json, urllib.request
-import datetime
-from time import gmtime, strftime
 import psycopg2
 from psycopg2.extras import execute_values
-
+from time import gmtime, strftime
+from datetime import datetime, timedelta
 
 # todays date and time
-date_now = datetime.date.today()
+date_now = datetime.today().now()
 time_now = strftime("%H:%M:%S", gmtime())
 print("Today's Date: ", date_now)
 print("Current Time: ", time_now)
+print('\n')
+
+# ofiice time **************
+office_start = '10:00:00'
+office_end = '06:00:00'
+
+# time format ****************
+FMT = '%H:%M:%S'
 
 # ************ API data retrieve ************
 url = "https://datahead.herokuapp.com/api/employeers/"
@@ -48,22 +55,37 @@ conn.commit()
 # ************* execute query *************
 cur.execute("Select id, name, log_date, log_time, login, logout, current_out_time, total_out_time_day, "
             "total_out_time_month, count_total_out_number, absent_name from employee")
-historical_data = cur.fetchall()
+db_data = cur.fetchall()
 
 
-# ************* Historical data Retrieve *************
+# ************* Update data into Database *************
 for id, name, log_date, log_time, login, logout, current_out_time, total_out_time_day,\
-        total_out_time_month, count_total_out_number, absent_name  in historical_data:
-    print(id)
-    print(name)
-    print('\n')
-    break
+        total_out_time_month, count_total_out_number, absent_name  in db_data:
+    if id and log_date and log_time:
+        log_time = str(log_time)
+        employee_enter_time = datetime.strptime(log_time, FMT) - datetime.strptime(office_start, FMT)
+        if logout:
+            if login:
+                current_out_time = datetime.strptime(str(login), FMT) - datetime.strptime(str(logout), FMT)
+                cur.execute("UPDATE employee SET current_out_time = '{}' where id={}".format(current_out_time, id))
+                conn.commit()
+                print(id, current_out_time)
+
+    elif id:
+        print("Absent Today", id, name)
+        cur.execute("UPDATE employee SET absent_name = '{}' where id={}".format(name, id))
+        conn.commit()
 
 # close the cursor
 cur.close()
 
 # close the connection
 conn.close()
+
+# **************** retrieve every dict item from Database ********************
+history = []
+for i in db_data:
+    history.append(list(i))
 
 # **************** retrieve every dict item from API ********************
 for i in json_data:
@@ -80,7 +102,9 @@ render = web.template.render('templates/')
 
 class index:
     def GET(self):
-        return render.index(json_data)
+        return render.index(history)
+
+
 
 
 if __name__ == "__main__":

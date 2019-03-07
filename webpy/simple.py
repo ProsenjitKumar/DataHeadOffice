@@ -253,3 +253,13 @@ print(new_id)
     #             else\
     #                 insert_query = "INSERT INTO employee (id, name, log_date, log_time, login, logout) VALUES %s"\
     #             fi")
+
+
+# something do
+# print(login)
+# if current_out_time.days < 0:
+#     tdiff = timedelta(days=0,
+#                       seconds=current_out_time.seconds, microseconds=current_out_time.microseconds)
+#     print(id, tdiff)
+# cur.execute("insert into employers (id, name) values (%s, %s)", (7, "Akash"))
+# cur.execute("INSERT INTO employee (current_out_time) VALUES (%s)", (current_out_time))
