@@ -1,76 +1,238 @@
-$def with(history, absent, active, out, c)
+$def with(history, absent, active, out, absent_count, active_count, out_count, date_now, time_now1)
+<HTML>
 
-<title>Home Page</title>
+<head>
+  <title>Home Page</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+      #customers {
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
 
+    #customers td, #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
 
-$c
+    #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+    #customers tr:hover {background-color: #ddd;}
+
+    #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #4CAF50;
+      color: white;
+    }
+    #customers {
+      "height: 370px; width: 100%;"
+    }
+  </style>
+
+  <style>
+    a {
+      text-decoration: none;
+      display: inline-block;
+      padding: 8px 16px;
+    }
+
+    a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .previous {
+      background-color: #f1f1f1;
+      color: black;
+    }
+
+    .next {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .round {
+      border-radius: 50%;
+    }
+  </style>
+
+</head>
+
+<body>
+<!--search by calender-->
+<div style="padding-right: 300px; padding-left: 300px">
+  <form action="/action_page.html">
+    Search Employee result by Date:
+    <input type="date" name="employee_result">
+    <input type="submit">
+  </form>
+</div>
 
 <!-- DataTables of employees -->
-          <div style="margin:0 auto;width:85%;text-align:left" class="card mb-3">
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+<div style="padding-right: 300px; padding-left: 300px">
+  <table id="customers">
+  <tr>
+    <th>Record ID</th>
+    <th>Name</th>
+    <th>Log Date</th>
+    <th>Log Time</th>
+    <th>Entry</th>
+    <th>Logout</th>
+    <th>Interval Time</th>
+    <th>Absent</th>
+  </tr>
+    $for i in history:
+      <tr>
+        <td>$i[0]</td>
+        <td>$i[1]</td>
+        <td>$i[2]</td>
+        <td>$i[3]</td>
+        <td>$i[4]</td>
+        <td>$i[5]</td>
+        <td>$i[6]</td>
+        <td>$i[10]</td>
+      </tr>
+  </table><br>
+  <a href="#" class="previous">&laquo; Previous</a>
+  <a href="#" class="next">Next &raquo;</a>
 
+  <a href="#" class="previous round">&#8249;</a>
+  <a href="#" class="next round">&#8250;
+</div></a><br><br><br><br>
 
-                  <thead>
-                    <tr>
-                      <th>Record ID</th>
-                      <th>Name</th>
-                      <th>Log Date</th>
-                      <th>Log Time</th>
-                      <th>Login</th>
-                      <th>Logout</th>
-                      <th>Out Time</th>
-                      <th>Absent Today</th>
-                    </tr>
-                  </thead>
-
-                  $for i in history:
-
-                     <tbody>
-                          <tr>
-                            <td>$i[0]</td>
-                            <td>$i[1]</td>
-                            <td>$i[2]</td>
-                            <td>$i[3]</td>
-                            <td>$i[4]</td>
-                            <td>$i[5]</td>
-                            <td>$i[6]</td>
-                            <td>$i[10]</td>
-                          </tr>
-                      <tbody>
-
-                </table>
-              </div>
-            </div>
-          </div><br><br><br>
 
 <!--pie chart employee present position survey-->
+<script src= "https://cdn.zingchart.com/zingchart.min.js"></script>
+		<script> zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+		ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9","ee6b7db5b51705a13dc2339db3edaf6d"];</script>
+		<div id='myChart'></div>
 <script>
-window.onload = function() {
-
-var chart = new CanvasJS.Chart("chartContainer", {
-  animationEnabled: true,
-  title: {
-    text: "Employeer Position - Today"
+    var myConfig = {
+  "type":"pie",
+  "title":{
+    "text":"Employeer Position $date_now  $time_now1"
   },
-  data: [{
-    type: "pie",
-    startAngle: 240,
-    yValueFormatString: "##0.00\"%\"",
-    indexLabel: "{label} {y}",
-    dataPoints: [
-      {y: $absent, label: "Absent"},
-      {y: $active, label: "Active"},
-      {y: $out, label: "Out"},
-    ]
-  }]
+  "legend":{
+    "x":"75%",
+    "y":"25%",
+    "border-width":1,
+    "border-color":"gray",
+    "border-radius":"5px",
+    "header":{
+      "text":"Legend",
+      "font-family":"Georgia",
+      "font-size":12,
+      "font-color":"#3333cc",
+      "font-weight":"normal"
+    },
+    "marker":{
+      "type":"circle"
+    },
+    "toggle-action":"remove",
+    "minimize":true,
+    "icon":{
+      "line-color":"#9999ff"
+    },
+    "max-items":8,
+    "overflow":"scroll"
+  },
+  "plotarea":{
+    "margin-right":"30%",
+    "margin-top":"15%"
+  },
+  "plot":{
+    "animation":{
+ 	    "on-legend-toggle": true, //set to true to show animation and false to turn off
+ 	    "effect": 5,
+ 	    "method": 1,
+ 	    "sequence": 1,
+ 	    "speed": 1
+    },
+    "value-box":{
+      "text":"%v",
+      "font-size":12,
+      "font-family":"Georgia",
+      "font-weight":"normal",
+          "placement":"out",
+          "font-color":"gray",
+    },
+    "tooltip":{
+      "text":"%t: %v (%npv%)",
+      "font-color":"black",
+      "font-family":"Georgia",
+      "text-alpha":1,
+      "background-color":"white",
+      "alpha":0.7,
+      "border-width":1,
+      "border-color":"#cccccc",
+      "line-style":"dotted",
+      "border-radius":"10px",
+      "padding":"10%",
+      "placement":"node:center"
+    },
+    "border-width":1,
+    "border-color":"#cccccc",
+    "line-style":"dotted"
+  },
+  "series":[
+    {
+      "values":[$absent],
+      "background-color":"#cc0000",
+      "text":"Absent"
+    },
+    {
+      "values":[$active],
+      "background-color":"#339933",
+      "text":"Active"
+    },
+    {
+      "values":[$out],
+      "background-color":"#0066ff",
+      "text":"Out"
+    }
+
+  ]
+};
+
+zingchart.render({
+	id : 'myChart',
+	data : myConfig,
+	height: 600,
+	width: "100%"
 });
-chart.render();
+</script><br><br>
 
-}
-</script>
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
+  <!--pie chart how many employees are active, absent and out there -->
+  <script>
+  window.onload = function() {
+
+  var chart = new CanvasJS.Chart("chartContainer", {
+    animationEnabled: true,
+    title: {
+      text: "How many employees are active, absent and out there"
+    },
+    data: [{
+      type: "pie",
+      startAngle: 240,
+      yValueFormatString: "##0\"\"",
+      indexLabel: "{label} {y}",
+      dataPoints: [
+        {y: $absent_count, label: "Absent"},
+        {y: $active_count, label: "Active"},
+        {y: $out_count, label: "Out"},
+      ]
+    }]
+  });
+  chart.render();
+
+  }
+  </script>
+  <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</HTML>
 
