@@ -24,7 +24,7 @@ office_end = '06:00:00'
 # time format
 FMT = '%H:%M:%S'
 
-# Retirve Json Data from Withing API
+# Retirve Json Data from Within API
 url = "https://datahead.herokuapp.com/api/employeers/"
 try:
     response = urllib.request.urlopen(url)
