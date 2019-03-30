@@ -2,11 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="5">
     <title>Employee</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="js/scripts.js"></script> -->
 </head>
 <body>
 
@@ -14,10 +11,14 @@
 <div style="padding-right: 300px; padding-left: 300px">
   <form action="/search" method=post>
     Search Employee result by Date:
-    <input type="date" name="search" value="{{ request.form.search}}">
+    <input type="date" name="search" value="{{ request.form.search }}">
     <input type="submit">
   </form>
+<a href="/employee.html">Today Employee</a>
 </div>
+
+
+
 
 <!-- DataTables of employees -->
 <div style="padding-right: 300px; padding-left: 300px">
@@ -29,19 +30,29 @@
     <th>Logout</th>
     <th>Interval Time</th>
     <th>Total Interval Time</th>
+    <th>Date</th>
+    <th>Desig</th>
+    <th>Dept</th>
+    <th>P_Status</th>
   </tr>
-      {% for data in current_data %}
-        <tr>
-          <td>{{ data[0] }}</td>
-          <td>{{ data[1] }}</td>
-          <td>{{ data[4] }}</td>
-          <td>{{ data[5] }}</td>
-          <td>{{ data[7] }}</td>
-          <td>{{ data[8] }}</td>
-        </tr>
-      {% endfor %}
+    {% for data in history %}
+      <tr>
+        <td>{{ data[0] }}</td>
+        <td>{{ data[1] }}</td>
+        <td>{{ data[4] }}</td>
+        <td>{{ data[6] }}</td>
+        <td>{{ data[10] }}</td>
+        <td>{{ data[12] }}</td>
+        <td>{{ data[16] }}</td>
+        <td>{{ data[2] }}</td>
+        <td>{{ data[3] }}</td>
+        <td>{{ data[8] }}</td>
+
+      </tr>
+    {% endfor %}
   </table><br>
 
 </div>
+
 </body>
 </html>

@@ -2,16 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="5">
     <title>Employee</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="js/scripts.js"></script> -->
 </head>
 <body>
 
 <!--search by calender-->
 <div style="padding-right: 300px; padding-left: 300px">
-  <form action="/action_page.html">
+  <form action="/search" method=post>
     Search Employee result by Date:
-    <input type="date" name="employee_result">
+    <input type="date" name="search" value="{{ request.form.search}}">
     <input type="submit">
   </form>
 </div>
@@ -25,6 +28,7 @@
     <th>Entry</th>
     <th>Logout</th>
     <th>Interval Time</th>
+    <th>Total Interval Time</th>
   </tr>
     {% for data in current_data %}
       <tr>
@@ -33,15 +37,46 @@
         <td>{{ data[4] }}</td>
         <td>{{ data[5] }}</td>
         <td>{{ data[7] }}</td>
+        <td>{{ data[8] }}</td>
       </tr>
     {% endfor %}
   </table><br>
-  <a href="#" class="previous">&laquo; Previous</a>
-  <a href="#" class="next">Next &raquo;</a>
 
-  <a href="#" class="previous round">&#8249;</a>
-  <a href="#" class="next round">&#8250;
-</div></a><br><br><br><br>
+</div></a><br><br>
+
+
+<script>
+<!--
+function timedRefresh(timeoutPeriod) {
+  setTimeout("location.reload(true);",timeoutPeriod);
+}
+
+window.onload = timedRefresh(5000);
+
+//   -->
+</script>
+
+<!-- <script type="text/javascript">
+  
+  $(document).ready( function(){
+    $('#customers').load('employee.html');
+    refresh();
+  });
+
+  function refresh(){
+    setTimeout( function(){
+      $('#customers').fadeOut('slow').load('employee.html').fadeIn('slow');
+      refresh();
+    }, 200);
+  }
+
+</script> -->
+
+<!-- <script type="text/javascript">
+  function loadref(time){
+    setTimeout("location.reload(true);",time);
+  }
+</script> -->
 
 
 <!--pie chart employee present position survey-->

@@ -22,17 +22,12 @@ def insert_data_into_db():
                     (EXCLUDED.pname, EXCLUDED.desig, EXCLUDED.dept, EXCLUDED.lts_i, EXCLUDED.lts_O, EXCLUDED.p_status) \
                     RETURNING *"
 
-    #for i in api_data():
-        #print(i[0], i[1], i[2], i[3], )
-        #insert_query = "SELECT merge_db({}, '{}', '{}', '{}')".format(i[0], i[1], i[2], i[3], i[4], i[5], i[6])
-    # execute_values(cur, insert_query, api_data())
     execute_values(cur, insert_query, api_data())
-        #cur.execute(insert_query)
     conn.commit()
 
     # execute query
-    cur.execute("Select pid, pname, desig, dept, lts_i, lts_O, p_status, interval_time, total_interval_time, out_count\
-     from employee where today = current_date")
+    cur.execute("Select pid, pname, desig, dept, lts_i, lts_O, p_status, interval_time, total_interval_time, out_count,\
+     login, logout from employee where today = current_date")
     db_data = cur.fetchall()
 
     return db_data
@@ -41,6 +36,7 @@ def insert_data_into_db():
 current_data = []
 for i in insert_data_into_db():
     current_data.append(list(i))
+
 
 
 
