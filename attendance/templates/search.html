@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!--search by calender-->
+<div style="padding-right: 300px; padding-left: 300px">
+  <form action="/search" method=post>
+    Search Employee result by Date:
+    <input type="date" name="search" value="{{ request.form.search }}">
+    <input type="submit">
+  </form>
+<a href="/employee.html">Today Employee</a>
+</div>
+
+<!-- DataTables of employees -->
+<div style="padding-right: 300px; padding-left: 300px">
+  <table id="customers">
+  <tr>
+    <th>Record ID</th>
+    <th>Name</th>
+    <th>Entry</th>
+    <th>Logout</th>
+    <th>Interval Time</th>
+    <th>Total Interval Time</th>
+    <th>Date</th>
+    <th>Desig</th>
+    <th>Dept</th>
+    <th>P_Status</th>
+  </tr>
+    {% if history %}
+      {% for data in history %}
+        <tr>
+          <td>{{ data[0] }}</td>
+          <td>{{ data[1] }}</td>
+          <td>{{ data[5] }}</td>
+          <td>{{ data[7] }}</td>
+          <td>{{ data[15] }}</td>
+          <td>{{ data[17] }}</td>
+          <td>{{ data[12] }}</td>
+          <td>{{ data[2] }}</td>
+          <td>{{ data[3] }}</td>
+          <td>{{ data[8] }}</td>
+        </tr>
+      {% endfor %}
+    {% else %}
+
+  </table>
+  <h1 style="color: red">Data Not Available</h1>
+    {% endif %}<br>
+</div>
+
+</body>
+</html>
