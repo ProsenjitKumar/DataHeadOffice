@@ -15,16 +15,17 @@ def api_data():
         print("Internet Not Connected")  ## Handle error here.
 
     fields = [
-        'id',
-        'name',
-        'log_date',
-        'log_time',
-        'login',
-        'logout'
+        'pid',
+        'pname',
+        'desig',
+        'dept',
+        'lts_i',
+        'lts_O',
+        'p_status'
     ]
 
     my_data = [list(item[field] for field in fields) for item in json_data]
     return my_data
 
-
+print(api_data())
 

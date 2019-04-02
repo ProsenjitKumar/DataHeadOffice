@@ -21,15 +21,12 @@
 <div style="padding-right: 300px; padding-left: 300px">
   <table id="customers">
   <tr>
-    <th>Record ID</th>
+    <th>ID</th>
     <th>Name</th>
-    <th>Entry</th>
-    <th>Logout</th>
-    <th>Interval Time</th>
-    <th>Total Interval Time</th>
-    <th>Date</th>
     <th>Desig</th>
     <th>Dept</th>
+    <th>Entry</th>
+    <th>Logout</th>
     <th>P_Status</th>
   </tr>
     {% if history %}
@@ -37,14 +34,11 @@
         <tr>
           <td>{{ data[0] }}</td>
           <td>{{ data[1] }}</td>
-          <td>{{ data[5] }}</td>
-          <td>{{ data[7] }}</td>
-          <td>{{ data[15] }}</td>
-          <td>{{ data[17] }}</td>
-          <td>{{ data[12] }}</td>
           <td>{{ data[2] }}</td>
           <td>{{ data[3] }}</td>
-          <td>{{ data[8] }}</td>
+          <td>{{ data[4] }}</td>
+          <td>{{ data[5] }}</td>
+          <td>{{ data[6] }}</td>
         </tr>
       {% endfor %}
     {% else %}

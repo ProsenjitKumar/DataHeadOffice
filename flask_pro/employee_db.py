@@ -68,48 +68,50 @@ for id, name, log_date, log_time, login, logout, current_out_time, total_out_tim
         conn.commit()
 
 
-# employes all data
-history = []
-for i in insert_data_into_db():
-    history.append(list(i))
 
-
-cur.execute("SELECT COUNT(absent_name) FROM employee;")
-absent_name_count = cur.fetchall()
-cur.execute("SELECT COUNT(logout) FROM employee;")
-logout_count = cur.fetchall()
-cur.execute("SELECT COUNT(login) FROM employee;")
-login_count_data = cur.fetchall()
-cur.execute("SELECT COUNT(name) FROM employee;")
-all_employee = cur.fetchall()
-
-# login count data
-for i in login_count_data:
-    print("Login Count:",i[0])
-    login_count = i[0]
-
-# total employee
-for i in all_employee:
-    print("All Employee Count:",i[0])
-    total_employee = i[0]
-print(absent_name_count)
-
-# absent and out count
-for i in absent_name_count:
-    print("Absent name Count:",i[0])
-    absent_count = i[0]
-    absent = (absent_count / 100) * total_employee
-    active_count = total_employee - i[0]
-    active = (active_count / 100) * total_employee
-
-# logout count
-for i in logout_count:
-    print("Total Logout Count:",i[0])
-    total_out_count = i[0]
-    out_count = total_out_count - login_count
-    out = (out_count / 100) * total_employee
-    # still out employee
-    print("Still Out",out_count)
+#
+# # employes all data
+# history = []
+# for i in insert_data_into_db():
+#     history.append(list(i))
+#
+#
+# cur.execute("SELECT COUNT(absent_name) FROM employee;")
+# absent_name_count = cur.fetchall()
+# cur.execute("SELECT COUNT(logout) FROM employee;")
+# logout_count = cur.fetchall()
+# cur.execute("SELECT COUNT(login) FROM employee;")
+# login_count_data = cur.fetchall()
+# cur.execute("SELECT COUNT(name) FROM employee;")
+# all_employee = cur.fetchall()
+#
+# # login count data
+# for i in login_count_data:
+#     print("Login Count:",i[0])
+#     login_count = i[0]
+#
+# # total employee
+# for i in all_employee:
+#     print("All Employee Count:",i[0])
+#     total_employee = i[0]
+# print(absent_name_count)
+#
+# # absent and out count
+# for i in absent_name_count:
+#     print("Absent name Count:",i[0])
+#     absent_count = i[0]
+#     absent = (absent_count / 100) * total_employee
+#     active_count = total_employee - i[0]
+#     active = (active_count / 100) * total_employee
+#
+# # logout count
+# for i in logout_count:
+#     print("Total Logout Count:",i[0])
+#     total_out_count = i[0]
+#     out_count = total_out_count - login_count
+#     out = (out_count / 100) * total_employee
+#     # still out employee
+#     print("Still Out",out_count)
 
 
 # close the cursor
