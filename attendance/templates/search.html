@@ -14,7 +14,7 @@
     <input type="date" name="search" value="{{ request.form.search }}">
     <input type="submit">
   </form>
-<a href="/employee.html">Today Employee</a>
+<span style="color: violate; font-size:15px;fond-family:bold"><a href="/employee.html">Home</a></span>
 </div>
 
 <!-- DataTables of employees -->
@@ -44,7 +44,7 @@
     {% else %}
 
   </table>
-  <h1 style="color: red">Data Not Available</h1>
+  <h1 style="color: red">{{ searchData }} Data Not Available</h1>
     {% endif %}<br>
 </div>
 

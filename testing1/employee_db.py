@@ -26,8 +26,8 @@ def insert_data_into_db():
     conn.commit()
 
     # execute query
-    cur.execute("Select pid, pname, desig, dept, lts_i, lts_O, p_status, interval_time, total_interval_time, out_count,\
-     login, logout from employee where today = current_date")
+    cur.execute("Select pid, pname, desig, dept, lts_i, lts_O, p_status, interval_time, total_interval_time from "
+                "employee where today = current_date")
     db_data = cur.fetchall()
 
     return db_data

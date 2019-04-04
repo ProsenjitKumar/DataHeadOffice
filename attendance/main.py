@@ -1,5 +1,6 @@
+import requests
 from flask import Flask, render_template, request
-from attendance.api_data import all_data
+from attendance.api_data import my_data
 import json, urllib.request
 from socket import error as SocketError
 import errno
@@ -9,7 +10,7 @@ app = Flask(__name__)
 
 @app.route('/employee.html')
 def index():
-    return render_template('attendance.html', current_data=all_data)
+    return render_template('attendance.html', current_data=my_data)
 
 
 @app.route('/search', methods=['GET', 'POST'])
@@ -40,13 +41,13 @@ def search():
         ]
 
         history_my_data = [list(item[field] for field in fields) for item in result]
-        render_value = render_template('search.html', history=history_my_data)
+        render_value = render_template('search.html', history=history_my_data, searchData=searchData)
 
     return render_value
 
 
 if __name__ == '__main__':
-    app.jinja_env.auto_reload = True
-    app.config['TEMPLATES_AUTO_RELOAD'] = True
+    # app.jinja_env.auto_reload = True
+    # app.config['TEMPLATES_AUTO_RELOAD'] = True
     app.run(debug=True, port=8080, host='localhost')
 
