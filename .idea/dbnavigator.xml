@@ -41,9 +41,9 @@
   </component>
   <component name="DBNavigator.Project.FileConnectionMappingManager">
     <mapping file-url="file://$PROJECT_DIR$/postgresql/interval_time.sql" connection-id="6fe99d84-f8de-4121-bd65-15f1cd0f31ec" session-id="MAIN" current-schema="public" />
-    <mapping file-url="file://$PROJECT_DIR$/postgresql/update_rule.sql" connection-id="a1f2eb79-25da-4476-8f43-274a08490cad" session-id="MAIN" current-schema="public" />
-    <mapping file-url="file://$PROJECT_DIR$/postgresql/update.sql" connection-id="a1f2eb79-25da-4476-8f43-274a08490cad" session-id="MAIN" current-schema="" />
     <mapping file-url="file://$PROJECT_DIR$/postgresql/if_else.sql" connection-id="6fe99d84-f8de-4121-bd65-15f1cd0f31ec" session-id="MAIN" current-schema="public" />
+    <mapping file-url="file://$PROJECT_DIR$/postgresql/update.sql" connection-id="a1f2eb79-25da-4476-8f43-274a08490cad" session-id="MAIN" current-schema="" />
+    <mapping file-url="file://$PROJECT_DIR$/postgresql/update_rule.sql" connection-id="a1f2eb79-25da-4476-8f43-274a08490cad" session-id="MAIN" current-schema="public" />
   </component>
   <component name="DBNavigator.Project.MethodExecutionManager">
     <method-browser />

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Prosenjit Das">
+  <meta http-equiv="X-UA-Compatible" content="IE-edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Base</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='sys-admin.css') }}">
+<!--  <script type="text/javascript" src="{{ url_for('static', filename='sys-admin.js') }}"></script>-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+
+
+<div id="accordian">
+  <ul>
+    <li>
+      <h3>Web Design</h3>
+        <ul>
+          <li><a href="#">html5</a></li>
+          <li><a href="#">css</a></li>
+          <li><a href="#">jquery</a></li>
+          <li><a href="#">bootstrap</a></li>
+        </ul>
+    </li>
+
+    <li class="active">
+      <h3>Web Development</h3>
+        <ul>
+          <li><a href="#">Django</a></li>
+          <li><a href="/sys-admin.html">Flask</a></li>
+          <li><a href="#">Python</a></li>
+          <li><a href="#">Php</a></li>
+        </ul>
+    </li>
+
+    <li>
+      <h3>Programming Language</h3>
+        <ul>
+          <li><a href="#">Python</a></li>
+          <li><a href="#">Java</a></li>
+          <li><a href="#">C</a></li>
+          <li><a href="#">C++</a></li>
+        </ul>
+    </li>
+
+  </ul>
+</div>
+
+</body>
+</html>
