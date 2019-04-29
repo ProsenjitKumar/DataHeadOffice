@@ -1,0 +1,70 @@
+-- Table for System Config
+CREATE TABLE system_config
+              (
+                   id  SERIAL PRIMARY KEY,
+                   config_item  VARCHAR(50)  NOT NULL,
+                   default_value  VARCHAR(100),
+                   system_value  VARCHAR(100),
+                   custom_value_a  VARCHAR(100),
+                   custom_value_b  VARCHAR(100),
+                   custom_value_c  VARCHAR(100),
+                   custom_value_d  VARCHAR(100),
+                   custom_value_e  VARCHAR(100)
+              );
+
+-- Table for system users
+ CREATE TABLE system_users
+              (
+                   id  SERIAL PRIMARY KEY,
+                   user_id  VARCHAR(50)  NOT NULL,
+                   user_secret  VARCHAR(128)  NOT NULL,
+                   user_status  INTEGER  NOT NULL,
+                   user_type  INTEGER  NOT NULL,
+                   user_tz  INTEGER  NOT NULL,
+                   created_at  TIMESTAMP  NOT NULL,
+                   auth_ver  INTEGER  NOT NULL,
+                   notes  TEXT
+              );
+
+
+
+-- table for customer
+CREATE TABLE customer
+              (
+                   id  SERIAL PRIMARY KEY,
+                   cus_id  VARCHAR(10) NOT NULL,
+                   cus_name  VARCHAR(50) NOT NULL,
+                   cus_email  VARCHAR(50) NOT NULL,
+                   cus_org  VARCHAR(100),
+                   cus_phone  VARCHAR(20),
+                   cus_address_1  VARCHAR(100),
+                   cus_address_2  VARCHAR(100),
+                   cus_state  VARCHAR(50),
+                   cus_country  VARCHAR(50),
+                   cus_tz  INTEGER  NOT NULL,
+                   cus_enroll  TIMESTAMP  NOT NULL,
+                   cus_last_access  TIMESTAMP,
+                   cus_status  INTEGER  NOT NULL,
+                   cus_type  INTEGER  NOT NULL,
+                   notes  TEXT
+              );
+
+
+-- table for app-service
+CREATE TABLE app_service
+              (
+                   id  SERIAL PRIMARY KEY,
+                   cus_id  VARCHAR(12) NOT NULL,
+                   app_id  VARCHAR(12) NOT NULL,
+                   app_key  VARCHAR(128) NOT NULL,
+                   app_created  TIMESTAMP  NOT NULL,
+                   app_expire  TIMESTAMP  NOT NULL,
+                   app_renewable  INTEGER  NOT NULL,
+                   last_access  TIMESTAMP,
+                   app_status  INTEGER  NOT NULL,
+                   auth_ver  INTEGER  NOT NULL,
+                   notes  TEXT
+              );
+
+select * from customer;
+select * from app_service

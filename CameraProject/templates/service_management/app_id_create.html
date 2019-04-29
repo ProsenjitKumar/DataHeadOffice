@@ -1,9 +1,10 @@
+
 {% extends 'index.html' %}
 
-{% block title %}<title>Customer Registration</title>{% endblock %}
+{% block title %}<title>Create New App Id/Key</title>{% endblock %}
 
 {% block content %}
-<h2 style="color: green;font-family: KacstPen;padding-left: 10%">Customer Registration</h2>
+<h2 style="color: green;font-family: KacstPen;padding-left: 10%">Create New App Id/Key</h2>
 
 <style>
         *,
@@ -16,7 +17,7 @@
       border-radius: 5px;
       font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
       overflow: hidden;
-      width: 340px;
+      width: 380px;
     }
     fieldset {
       border: 0;
@@ -67,62 +68,54 @@
       margin: 10px 0 0 20px;
     }
 
+    /* checkbox */
+    input[type="checkbox"] {
+      width: 13px;
+      height: 13px;
+      padding: 0;
+      margin:0;
+      vertical-align: bottom;
+      position: relative;
+      top: -1px;
+      *overflow: hidden;
+    }
+    input[type="checkbox"] ~ label {
+        padding:6px;
+        display:inline-block;
+    }
+
 </style>
 
 
 <form method="post" action="">
   <fieldset class="account-info">
-    <label>
-      Name
-      <input type="text" name="name" required>
-    </label>
 
     <label>
-      Email
-      <input type="text" name="email" required>
-    </label>
-
-      <label>
-      Company/Organization
-      <input type="text" name="company">
-    </label>
-
-      <label>
-      Phone
-      <input type="text" name="phone">
-    </label>
-
-      <label>
-      Address 1
-      <input type="text" name="addr_1">
-    </label>
-
-      <label>
-      Address 2
-      <input type="text" name="addr_2">
-    </label>
-
-      <label>
-      <select name="country" class="countries" id="countryId">
-      <option value="">Select Country</option>
-          {% for country in countries %}
-                <option value="{{ country }}">{{ country }}</option>
-          {% endfor %}
-      </select>
-    </label>
-
-      <label>
-      <span>Customer Type:</span>
-          <select name="cus_types" class="cus_types" id="cus_typesId">
-              {% for type in cus_types %}
-                    <option value="">{{ type }}</option>
-              {% endfor %}
+          <span>Select Customer:</span>
+              <select name="cus_types" class="cus_types" id="cus_typesId">
+                  {% for type in cus_types %}
+                        <option value="">{{ type }}</option>
+                  {% endfor %}
           </select>
-      </label>
+    </label>
+
+    <label>
+    <span>Date Of Experience[YYYY-MM-DD HH-MM-SS]</span>
+        <input type="text" name="date_time" placeholder="YYYY-MM-DD HH-MM-SS">
+    </label>
+
+     <label>
+         <span>Service (App Key) can be renewed: </span>
+      <input type="checkbox" name="checkbox">
+  </label>
+
 
   </fieldset>
+
+
+
   <fieldset class="account-action">
-    <input class="btn" type="submit" name="submit" value="Create Account">
+    <input class="btn" type="submit" name="submit" value="Create App ID">
   </fieldset>
 </form>
 

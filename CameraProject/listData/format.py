@@ -1,0 +1,5 @@
+image_format = ['jpg', 'png', 'jpeg', 'svm']
+video_format = ['H264(MP4)', 'VP8(WEBM)', 'RAW(AVI)', 'HUFFYUV(AVI)', 'LossLess JPEG(AVI)']
+cus_types = ['Trial', 'Regular', 'Priority']
+yes_no = ['yes', 'no']
+color = ['white', 'green', 'gold', 'violate', 'red', 'yellow']

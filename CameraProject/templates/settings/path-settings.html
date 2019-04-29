@@ -1,9 +1,10 @@
+
 {% extends 'index.html' %}
 
-{% block title %}<title>Customer Registration</title>{% endblock %}
+{% block title %}<title>Path Settings</title>{% endblock %}
 
 {% block content %}
-<h2 style="color: green;font-family: KacstPen;padding-left: 10%">Customer Registration</h2>
+<h2 style="color: green;font-family: KacstPen;padding-left: 10%">Path Configure</h2>
 
 <style>
         *,
@@ -16,7 +17,7 @@
       border-radius: 5px;
       font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
       overflow: hidden;
-      width: 340px;
+      width: 540px;
     }
     fieldset {
       border: 0;
@@ -67,65 +68,69 @@
       margin: 10px 0 0 20px;
     }
 
+/* checkbox Text */
+    input[type="file"] {
+      width: 190px;
+      height: 20px;
+      padding: 0;
+      margin:0;
+      vertical-align: bottom;
+      position: relative;
+      top: -1px;
+      *overflow: hidden;
+    }
 </style>
 
 
 <form method="post" action="">
   <fieldset class="account-info">
-    <label>
-      Name
-      <input type="text" name="name" required>
-    </label>
 
     <label>
-      Email
-      <input type="text" name="email" required>
+    <span>Root folder for customer gallery(images): </span>
+      <input type="file" name="customer_gallery_image">
     </label>
 
       <label>
-      Company/Organization
-      <input type="text" name="company">
+          <span>Path for SVM face detection model: </span>
+          <textarea name='abc' rows=2 cols=50></textarea>
+<input type=file name="svm_path" onchange="this.form.abc.value+=';' + this.value; return
+true;">
+
     </label>
 
       <label>
-      Phone
-      <input type="text" name="phone">
+    <span>Path for CNN face detection model: </span>
+      <input type="file" name="cnn_path">
     </label>
 
       <label>
-      Address 1
-      <input type="text" name="addr_1">
+    <span>Path for face prediction model(general): </span>
+      <input type="file" name="general_prediction">
     </label>
 
       <label>
-      Address 2
-      <input type="text" name="addr_2">
+    <span>Path for face prediction model (recognition): </span>
+      <input type="file" name="recognition_prediction">
     </label>
 
       <label>
-      <select name="country" class="countries" id="countryId">
-      <option value="">Select Country</option>
-          {% for country in countries %}
-                <option value="{{ country }}">{{ country }}</option>
-          {% endfor %}
-      </select>
+    <span>Path for face recognition model: </span>
+      <input type="file" name="recognition_model">
     </label>
 
-      <label>
-      <span>Customer Type:</span>
-          <select name="cus_types" class="cus_types" id="cus_typesId">
-              {% for type in cus_types %}
-                    <option value="">{{ type }}</option>
-              {% endfor %}
-          </select>
-      </label>
 
   </fieldset>
+
+
+
   <fieldset class="account-action">
-    <input class="btn" type="submit" name="submit" value="Create Account">
+    <input class="btn" type="submit" name="submit" value="Update">
   </fieldset>
 </form>
 
 
 
 {% endblock %}
+
+
+

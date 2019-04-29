@@ -1,11 +1,200 @@
+
 {% extends 'index.html' %}
 
-{% block title %}<title>Image</title>{% endblock %}
+{% block title %}<title>Image Configure</title>{% endblock %}
 
 {% block content %}
-<h3>Image Design</h3>
-            sdfoisdf
-sdfsdf[psdf
-dfsdspkfpsdkf
+<h2 style="color: green;font-family: KacstPen;padding-left: 10%">Image Configure</h2>
+
+<style>
+        *,
+    *:before,
+    *:after {
+       box-sizing: border-box;
+    }
+    form {
+      border: 1px solid #2e6917;
+      border-radius: 5px;
+      font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+      overflow: hidden;
+      width: 480px;
+    }
+    fieldset {
+      border: 0;
+      margin: 0;
+      padding: 0;
+    }
+    input {
+      border-radius: 5px;
+      font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+      margin: 0;
+    }
+    .account-info {
+      padding: 20px 20px 0 20px;
+    }
+    .account-info label {
+      color: #395870;
+      display: block;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .account-info input {
+      background: #fff;
+      border: 1px solid #c6c7cc;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .1);
+      color: #636466;
+      padding: 6px;
+      margin-top: 6px;
+      width: 100%;
+    }
+    .account-action {
+      background: #f0f0f2;
+      border-top: 1px solid #c6c7cc;
+      padding: 20px;
+    }
+    .account-action .btn {
+      background: linear-gradient(blue, #1ea911);
+      border: 0;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+      float: left;
+      padding: 8px 16px;
+    }
+    .account-action label {
+      color: #7c7c80;
+      font-size: 12px;
+      float: left;
+      margin: 10px 0 0 20px;
+    }
+
+    /* checkbox */
+    input[type="number"] {
+      width: 90px;
+      height: 20px;
+      padding: 0;
+      margin:0;
+      vertical-align: bottom;
+      position: relative;
+      top: -1px;
+      *overflow: hidden;
+    }
+
+</style>
+
+
+<form method="post" action="">
+  <fieldset class="account-info">
+
+    <label>
+    <span>Face detection type for Image</span>
+      <select name="image_format" class="image_format" id="image_format">
+          {% for format in image_format %}
+                <option value="">{{ format }}</option>
+          {% endfor %}
+      </select>
+    </label>
+
+    <label>
+    <span>Image width for face enroll: </span>
+      <input type="number" name="image_width_face_enroll">
+    </label>
+
+    <label>
+    <span>Image height for face enroll: </span>
+      <input type="number" name="image_height_face_enroll">
+    </label>
+
+    <label>
+    <span>Image width for face detection: </span>
+      <input type="number" name="image_width_face_detection">
+    </label>
+
+    <label>
+    <span>Image height for face detection: </span>
+      <input type="number" name="image_height_face_detection">
+    </label>
+
+  <label>
+    <span>Number of upsamples for face detection in Image: </span>
+      <input type="number" name="upsamples_image">
+  </label>
+
+  <label>
+    <span>Align faces in Image before recognition</span>
+      <select name="recognize_image_format" id="recognize_image_format">
+          {% for format in yes_no %}
+                <option value="">{{ format }}</option>
+          {% endfor %}
+      </select>
+    </label>
+
+  <label>
+    <span>Number of jitters for face detection in Image: </span>
+      <input type="number" name="jitters_image">
+  </label>
+
+  <label>
+    <span>Face classification threshold for Image: </span>
+      <input type="number" name="classification_image">
+  </label>
+
+  <label>
+    <span>Lowest confidence for face recognition in Image: </span>
+      <input type="number" name="confidenece_recog_image">
+  </label>
+
+  <label>
+    <span>Color for unknown face in Image</span>
+      <select name="unknown_image_color" id="unknown_image_color">
+          {% for format in color %}
+                <option value="">{{ format }}</option>
+          {% endfor %}
+      </select>
+    </label>
+
+  <label>
+    <span>Color for known face in Image</span>
+      <select name="known_image_color" id="known_image_color">
+          {% for format in color %}
+                <option value="">{{ format }}</option>
+          {% endfor %}
+      </select>
+    </label>
+
+  <label>
+    <span>Color for special face in Image</span>
+      <select name="special_image_color" id="special_image_color">
+          {% for format in color %}
+                <option value="">{{ format }}</option>
+          {% endfor %}
+      </select>
+    </label>
+
+  <label>
+    <span>Color for suspected face in Image</span>
+      <select name="suspected_image_color" id="suspected_image_color">
+          {% for format in color %}
+                <option value="">{{ format }}</option>
+          {% endfor %}
+      </select>
+    </label>
+
+
+  </fieldset>
+
+
+
+  <fieldset class="account-action">
+    <input class="btn" type="submit" name="submit" value="Update">
+  </fieldset>
+</form>
+
+
 
 {% endblock %}
+
+
+
+
+

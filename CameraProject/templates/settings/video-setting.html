@@ -1,11 +1,182 @@
+
 {% extends 'index.html' %}
 
-{% block title %}<title>Video Setting</title>{% endblock %}
+{% block title %}<title>Video Configure</title>{% endblock %}
 
 {% block content %}
-<h3>Video</h3>
-            sdfoisdf
-sdfsdf[psdf
-dfsdspkfpsdkf
+<h2 style="color: green;font-family: KacstPen;padding-left: 10%">Video Configure</h2>
+
+<style>
+        *,
+    *:before,
+    *:after {
+       box-sizing: border-box;
+    }
+    form {
+      border: 1px solid #2e6917;
+      border-radius: 5px;
+      font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+      overflow: hidden;
+      width: 480px;
+    }
+    fieldset {
+      border: 0;
+      margin: 0;
+      padding: 0;
+    }
+    input {
+      border-radius: 5px;
+      font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+      margin: 0;
+    }
+    .account-info {
+      padding: 20px 20px 0 20px;
+    }
+    .account-info label {
+      color: #395870;
+      display: block;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .account-info input {
+      background: #fff;
+      border: 1px solid #c6c7cc;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .1);
+      color: #636466;
+      padding: 6px;
+      margin-top: 6px;
+      width: 100%;
+    }
+    .account-action {
+      background: #f0f0f2;
+      border-top: 1px solid #c6c7cc;
+      padding: 20px;
+    }
+    .account-action .btn {
+      background: linear-gradient(blue, #1ea911);
+      border: 0;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+      float: left;
+      padding: 8px 16px;
+    }
+    .account-action label {
+      color: #7c7c80;
+      font-size: 12px;
+      float: left;
+      margin: 10px 0 0 20px;
+    }
+
+    /* checkbox */
+    input[type="number"] {
+      width: 90px;
+      height: 20px;
+      padding: 0;
+      margin:0;
+      vertical-align: bottom;
+      position: relative;
+      top: -1px;
+      *overflow: hidden;
+    }
+
+</style>
+
+
+<form method="post" action="">
+  <fieldset class="account-info">
+
+    <label>
+        <span>Face detection type for Video</span>
+          <select name="video_format" class="video_format" id="video_format">
+              {% for format in video_format %}
+                    <option value="">{{ format }}</option>
+              {% endfor %}
+          </select>
+    </label>
+
+    <label>
+    <span>Video frame width: </span>
+      <input type="number" name="frame_width">
+    </label>
+
+    <label>
+    <span>Number of upsamples for face detection in Video: </span>
+      <input type="number" name="upsamples_video">
+    </label>
+
+  <label>
+    <span>Align faces in Video before recognition</span>
+      <select name="recognize_video_format" id="recognize_video_format">
+          {% for format in yes_no %}
+                <option value="">{{ format }}</option>
+          {% endfor %}
+      </select>
+  </label>
+
+  <label>
+    <span>Number of jitters for face detection in Video: </span>
+      <input type="number" name="jitters_video">
+  </label>
+
+  <label>
+    <span>Face classification threshold for Video: </span>
+      <input type="number" name="classification_video">
+  </label>
+
+  <label>
+    <span>Lowest confidence for face recognition in Video: </span>
+      <input type="number" name="confidenece_recog_video">
+  </label>
+
+  <label>
+    <span>Color for unknown face in Video</span>
+      <select name="unknown_image_color" id="unknown_video_color">
+          {% for format in color %}
+                <option value="">{{ format }}</option>
+          {% endfor %}
+      </select>
+    </label>
+
+  <label>
+    <span>Color for known face in Video</span>
+      <select name="known_image_color" id="known_video_color">
+          {% for format in color %}
+                <option value="">{{ format }}</option>
+          {% endfor %}
+      </select>
+    </label>
+
+  <label>
+    <span>Color for special face in Video</span>
+      <select name="special_image_color" id="special_video_color">
+          {% for format in color %}
+                <option value="">{{ format }}</option>
+          {% endfor %}
+      </select>
+    </label>
+
+  <label>
+    <span>Color for suspected face in Video</span>
+      <select name="suspected_image_color" id="suspected_video_color">
+          {% for format in color %}
+                <option value="">{{ format }}</option>
+          {% endfor %}
+      </select>
+    </label>
+
+
+  </fieldset>
+
+
+
+  <fieldset class="account-action">
+    <input class="btn" type="submit" name="submit" value="Update">
+  </fieldset>
+</form>
+
+
 
 {% endblock %}
+
+

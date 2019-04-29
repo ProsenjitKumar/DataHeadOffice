@@ -23,7 +23,7 @@ table_systemconfig = "face_system_config"      # name for config table
 table_systemuser = "face_system_users"      # name for config table
 table_customer = "customer"         # name for customer's table
 table_customer_user = "face_customer_users"         # name for customer's users table
-table_app_service = "face_app_service"   # name for customer's service/appkey table
+table_app_service = "app_service"   # name for customer's service/appkey table
 
 
 '''
@@ -377,7 +377,6 @@ def add_app_service(cusId=None, appId=None, appKey=None, createdAt=None, appExpi
     conn.close()
 
     return "ok"
-
 
 # ------------------------------------------------------------------------------
 # get app-id/key details

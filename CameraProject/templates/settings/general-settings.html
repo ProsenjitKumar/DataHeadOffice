@@ -1,9 +1,10 @@
+
 {% extends 'index.html' %}
 
-{% block title %}<title>Customer Registration</title>{% endblock %}
+{% block title %}<title>General Settings</title>{% endblock %}
 
 {% block content %}
-<h2 style="color: green;font-family: KacstPen;padding-left: 10%">Customer Registration</h2>
+<h2 style="color: green;font-family: KacstPen;padding-left: 10%">General Settings</h2>
 
 <style>
         *,
@@ -16,7 +17,7 @@
       border-radius: 5px;
       font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
       overflow: hidden;
-      width: 340px;
+      width: 480px;
     }
     fieldset {
       border: 0;
@@ -67,65 +68,84 @@
       margin: 10px 0 0 20px;
     }
 
+    /* checkbox Number */
+    input[type="number"] {
+      width: 90px;
+      height: 20px;
+      padding: 0;
+      margin:0;
+      vertical-align: bottom;
+      position: relative;
+      top: -1px;
+      *overflow: hidden;
+    }
+
+    /* checkbox Text */
+    input[type="text"] {
+      width: 190px;
+      height: 20px;
+      padding: 0;
+      margin:0;
+      vertical-align: bottom;
+      position: relative;
+      top: -1px;
+      *overflow: hidden;
+    }
+
 </style>
 
 
 <form method="post" action="">
   <fieldset class="account-info">
-    <label>
-      Name
-      <input type="text" name="name" required>
-    </label>
 
     <label>
-      Email
-      <input type="text" name="email" required>
+    <span>Aligned faces width: </span>
+      <input type="number" name="aligned_faces_width">
     </label>
 
-      <label>
-      Company/Organization
-      <input type="text" name="company">
-    </label>
-
-      <label>
-      Phone
-      <input type="text" name="phone">
-    </label>
-
-      <label>
-      Address 1
-      <input type="text" name="addr_1">
-    </label>
-
-      <label>
-      Address 2
-      <input type="text" name="addr_2">
-    </label>
-
-      <label>
-      <select name="country" class="countries" id="countryId">
-      <option value="">Select Country</option>
-          {% for country in countries %}
-                <option value="{{ country }}">{{ country }}</option>
+    <label>
+    <span>Face detection rectangle type</span>
+      <select name="recognize_image_format" id="recognize_image_format">
+          {% for format in range(1, 10) %}
+                <option value="">{{ format }}</option>
           {% endfor %}
       </select>
     </label>
 
-      <label>
-      <span>Customer Type:</span>
-          <select name="cus_types" class="cus_types" id="cus_typesId">
-              {% for type in cus_types %}
-                    <option value="">{{ type }}</option>
-              {% endfor %}
-          </select>
-      </label>
+  <label>
+    <span>Prefix for Customer ID: </span>
+      <input type="text" name="prefix_cus_id">
+    </label>
+
+  <label>
+    <span>Start ID for Customer: </span>
+      <input type="number" name="start_cus_id">
+    </label>
+
+  <label>
+    <span>Prefix for App Service ID: </span>
+      <input type="text" name="prefix_app_id">
+    </label>
+
+  <label>
+    <span>Start ID for App Service: </span>
+      <input type="number" name="start_app_id">
+    </label>
 
   </fieldset>
+
+
+
   <fieldset class="account-action">
-    <input class="btn" type="submit" name="submit" value="Create Account">
+    <input class="btn" type="submit" name="submit" value="Update">
   </fieldset>
 </form>
 
 
 
 {% endblock %}
+
+
+
+
+
